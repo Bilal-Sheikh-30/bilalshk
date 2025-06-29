@@ -1,12 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <link rel="icon" type="image/png" href="/profile-pic.png">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Project</title>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="/profile-pic.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>
+    <%= newProj ? 'New Project' : 'Edit Project' %>
+  </title>
+  <link rel="stylesheet" href="/styles/newProject.css">
 </head>
+
 <body>
-    New Project....
+  <form action="<%= newProj ? '/dashboard/add_project' : `/dashboard/edit_project/${project._id}` %>" method="POST"
+    enctype="multipart/form-data">
+    <h1 id="head">
+    <%= newProj ? 'Add a New Project' : 'Edit Project' %>
+  </h1>
+
+    <div class="inputFields">
+
+      <div class="left-div">
+
+        <label>Title:</label>
+          <input type="text" name="title" required value="<%= project?.title || '' %>" />
+
+        <label>Frontend Tech Stack:</label>
+          <input type="text" name="tech_frontend" value="<%= proj_descp?.[0]?.tech_stack?.frontend?.join(', ') || '' %>"
+            placeholder="e.g., React, Tailwind" required />
+
+        <label>Backend Tech Stack:</label>
+          <input type="text" name="tech_backend" value="<%= proj_descp?.[0]?.tech_stack?.backend?.join(', ') || '' %>"
+            placeholder="e.g., Node.js, Express" required />
+
+        <label>Database Tech Stack:</label>
+          <input type="text" name="tech_db" value="<%= proj_descp?.[0]?.tech_stack?.db?.join(', ') || '' %>"
+            placeholder="e.g., MongoDB, MySQL" required />
+
+        <label>GitHub Link:</label>
+          <input type="url" name="github_link" value="<%= proj_descp?.[0]?.link || '' %>"
+            placeholder="https://github.com/..." required />
+
+        <label>My Role:</label>
+          <select name="my_role" required>
+            <option value="frontend" <%=proj_descp?.[0]?.my_role==='frontend' ? 'selected' : '' %>>Frontend Developer
+            </option>
+            <option value="backend" <%=proj_descp?.[0]?.my_role==='backend' ? 'selected' : '' %>>Backend Developer
+            </option>
+            <option value="fullstack" <%=proj_descp?.[0]?.my_role==='fullstack' ? 'selected' : '' %>>Full Stack
+              Developer
+            </option>
+          </select>
+
+      </div>
+
+      <div class="right-div">
+
+        <label>Summary:</label>
+        <textarea name="summary" rows="2" required><%= project?.overview || '' %></textarea>
+
+      <label>Features:</label>
+        <textarea name="features" rows="3" required><%= proj_descp?.[0]?.features?.join(', ') || '' %></textarea>
+
+      <label>Overview:</label>
+        <textarea name="overview" rows="4" required><%= proj_descp?.[0]?.detailed_overview || '' %></textarea>
+
+      <label>Project Type:</label>
+        <select name="project_type" required>
+          <option value="individual" <%=proj_descp?.[0]?.project_type==='individual' ? 'selected' : '' %>>Individual
+          </option>
+          <option value="group" <%=proj_descp?.[0]?.project_type==='group' ? 'selected' : '' %>>Group</option>
+        </select>
+
+      <label>Visibility:</label>
+        <select name="visibility" required>
+          <option value="public" <%=project?.visibility==='public' ? 'selected' : '' %>>Public</option>
+          <option value="private" <%=project?.visibility==='private' ? 'selected' : '' %>>Private</option>
+        </select>
+
+      <label>Media (Image/Video):</label>
+        <input id="media-sub" type="file" name="media" accept="image/*,video/*" multiple />
+
+      </div>
+
+    </div>
+
+    <div class="submission">
+
+      <div id="media-preview" style="max-width: 600px; margin: auto; display: flex; flex-wrap: wrap; gap: 1rem;">
+        <% if (!newProj && project?.media?.length> 0) { %>
+          <% project.media.forEach(media=> { %>
+            <% if (media.match(/\.(mp4|webm|ogg)$/)) { %>
+              <video src="<%= media %>" controls style="max-width: 200px;"></video>
+              <% } else { %>
+                <img src="<%= media %>" style="max-width: 200px;" />
+                <% } %>
+                  <% }) %>
+                    <% } %>
+      </div>
+
+      <button type="submit">
+        <%= newProj ? 'Add Project' : 'Save Changes' %>
+      </button>
+
+    </div>
+  </form>
+<script src="/scripts/newProject.js"></script>
 </body>
+
 </html>

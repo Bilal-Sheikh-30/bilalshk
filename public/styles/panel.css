@@ -1,0 +1,117 @@
+* {
+    margin: 0;
+    padding: 0;
+    background-color: #1f2c3b;
+    /* background-color: #0e141b; */
+    color: #fff;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+}
+
+/* nav bar styling */
+
+
+nav {
+    width: 100vw; /* Full viewport width */
+    margin: 0;    /* Remove top margin if unnecessary */
+    padding: 1rem 2rem;
+    box-sizing: border-box; /* So padding doesn't exceed 100vw */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 1.5px solid #5e88b7;
+}
+
+
+#left {
+    width: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+
+
+button{
+    border: none;
+    border-radius: 10px;
+    background-color: #365c88;
+    height: 2rem;
+    width: 10rem;
+}
+button:hover{
+    background-color: #5e88b7;
+}
+
+nav a{
+    text-decoration: none;
+}
+
+button>a{
+    background-color: #365c88;
+}
+button>a:hover{
+    background-color: #5e88b7;
+
+}
+
+/* project holder */
+
+.prj{
+    width: 300px;
+    outline: 2px solid #5e88b7;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.text{
+    padding: 0.5rem;
+    /* text-align: center; */
+}
+
+/* proj title */
+#proj-title{
+    display: block;
+    text-align: center;
+    padding-bottom: 0.5rem;
+}
+
+#proj-holder {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    margin-left: 15rem;
+    display: flex; 
+    justify-content: space-evenly;
+    align-items: center; 
+}
+
+.projects {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  /* optional: limit the width */
+  max-width: 1200px; 
+}
+
+
+@media (max-width: 600px) {
+     nav {
+        flex-direction: column;
+        width: 100vw;
+        padding: 1rem;
+    }
+
+    #left {
+        width: 100%;
+        margin-top: 1rem;
+    }
+    #proj-holder{
+        margin: 2rem 10%;
+    }
+}

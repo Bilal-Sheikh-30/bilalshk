@@ -1,16 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <link rel="icon" type="image/png" href="/profile-pic.png">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="/profile-pic.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles/panel.css">
+  <title>Dashboard</title>
 </head>
+
 <body>
-<h1>Dashboard</h1>
-<form action="/dashboard/logout" method="post">
-    <button type="submit">Log out</button>
-</form>
-<a href="/dashboard/add_project">New Project</a>
+  <nav>
+    <h1>Bilal's Dashboard</h1>
+    <div id="left">
+    <button type="button"><a href="/dashboard/add_project" id="new-proj">New Project</a></button>
+    <form action="/dashboard/logout" method="post">
+      <button type="submit" id="logout-btn">Log out</button>
+    </form>
+    </div>
+  </nav>
+
+  <div id="proj-holder">
+  <div class="projects">
+    <% projects.forEach(project=> { %>
+      <a href="/dashboard/project/<%= project._id %>" style="text-decoration: none; color: inherit;">
+        <div class="prj">
+          <% const mediaUrl=project.media[0]; %>
+            <% if (mediaUrl && mediaUrl.match(/\.(mp4|webm|ogg)$/i)) { %>
+              <video src="<%= mediaUrl %>" class="prj_img" style="width: 100%;" controls></video>
+              <% } else { %>
+                <img src="<%= mediaUrl %>" alt="project image" class="prj_img" style="width: 100%;">
+                <% } %>
+                  <div class="text">
+                    <strong id="proj-title">
+                      <%= project.title %>
+                    </strong>
+                    <p>
+                      <%= project.overview %>
+                    </p>
+                  </div>
+        </div>
+      </a>
+      <% }) %>
+  </div>
+  </div>
+
+
+
 </body>
+
 </html>

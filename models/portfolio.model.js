@@ -5,22 +5,14 @@ const ProjectSchema = new mongoose.Schema({
   title: {
     type: String,
     trim: true,
-    required: true,
+    required: true
   },
   media: {
-    type: {
-      type: String,
-      enum: ['images', 'video'],
-      required: true,
-    },
-    files: {
-      type: [String], // Cloudinary URLs
-      required: true,
-    }
+    type: [String]
   },
   overview: {
     type: String,
-    trim: true,
+    trim: true
   },
   visibility:{
     type: String,
@@ -37,11 +29,11 @@ const ProjectDescriptionSchema = new mongoose.Schema({
   },
   detailed_overview: {
     type: String,
-    trim: true,
+    trim: true
   },
   features: {
     type: [String], 
-    trim: true,
+    trim: true
   },
   tech_stack: {
     frontend: {
@@ -56,15 +48,18 @@ const ProjectDescriptionSchema = new mongoose.Schema({
     type: [String],
     default: []
     }
-}
-,
+  },
   link: {
     type: String,
-    trim: true,
+    trim: true
   },
   my_role: {
     type: String,
-    trim: true,
+    trim: true
+  },
+  project_type:{
+    type: String,
+    trim: true
   }
 });
 
