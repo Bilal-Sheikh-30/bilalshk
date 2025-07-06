@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/profile-pic.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="/styles/index.css">
+    <title>BILAL AHMED SHEIKH</title>
+    <style>
+
+
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="left">
+            <img src="/profile-pic.png" alt="profile pic" class="profile_pic">
+            <a href="/" class="name">BILAL AHMED SHEIKH</a>
+        </div>
+        <div class="right">
+            <a href="/" class="active_menu">HOME</a>
+            <a href="/about">ABOUT</a>
+            <a href="/projects">PROJECTS</a>
+            <a href="/contact">CONTACT</a>
+        </div>
+    </nav>
+    <div class="banner">
+        <a href="#" id="greeting">HELLO, MY NAME IS BILAL</a>
+        <h1>I make websites.</h1>
+        <p>I'm a front-end developer and student at NED University.</p>
+        <p>I also make projects using python.</p>
+    </div>
+
+    <div id="blank"></div>
+    <h3 id="FEATURED_PROJECTS">RECENT PROJECTS</h3>
+    <main>
+        <% if (projects.length> 0) { %>
+            <div class="card-holder">
+                <% projects.forEach(project=> {
+                    let firstMedia = project.media && project.media.length > 0 ? project.media[0] : null;
+                    %>
+                    <div class="card"
+                        onclick="window.location.href='<%= project.link || `/projects/${project._id}` %>'">
+                        <% if (firstMedia && firstMedia.endsWith('.mp4')) { %>
+                            <video class="card-img" controls muted>
+                                <source src="<%= firstMedia %>" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <% } else if (firstMedia) { %>
+                                <img class="card-img" src="<%= firstMedia %>" alt="<%= project.title %>" />
+                                <% } else { %>
+                                    <img class="card-img" src="/images/default.png" alt="No Media" />
+                                    <% } %>
+
+                                        <div class="card-content">
+                                            <h5 class="card-title">
+                                                <%= project.title %>
+                                            </h5>
+                                            <p class="card-text">
+                                                <%= project.overview || 'No description provided.' %>
+                                            </p>
+                                            <a href="<%= project.link || `/projects/${project._id}` %>"
+                                                class="btn-read-more">
+                                                See Details
+                                                <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                    viewBox="0 0 14 10">
+                                                    <path stroke="currentColor" stroke-linecap="round"
+                                                        stroke-linejoin="round" stroke-width="2"
+                                                        d="M1 5h12m0 0L9 1m4 4L9 9" />
+                                                </svg>
+                                            </a>
+                                        </div>
+                    </div>
+                    <% }) %>
+            </div>
+            <% } else { %>
+                <h2 style="text-align: center; margin-top: 5vh;">No projects to show.</h2>
+                <% } %>
+    </main>
+
+    <footer>
+        <div id="media_handles">
+            <a href="https://www.linkedin.com/in/bilal-ahmed-sheikh/" target="_blank"><i
+                    class="fa-brands fa-linkedin fa-2xl"></i></a>
+            <a href="https://github.com/Bilal-Sheikh-30" target="_blank"><i class="fa-brands fa-github fa-2xl"></i></a>
+        </div>
+    </footer>
+    <script>
+        let projects = <% - JSON.stringify(projects) %>;
+        console.log(projects)
+
+    </script>
+</body>
+
+</html>
