@@ -9,5 +9,5 @@ jobs:
   ping:
     runs-on: ubuntu-latest
     steps:
-      - name: Curl your Render app
+      - name: portfolio
         run: curl https://bilalsheikh.onrender.com/about
