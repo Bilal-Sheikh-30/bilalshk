@@ -29,10 +29,10 @@ router.post('/contact-bilal',async (req, res) =>{
     };
     try {
         await transporter.sendMail(mailOptions)
-        res.send('Message sent to Bilal')
+        res.render('contact_status', {status: 'success', contact_person_name: name})
     } catch (error) {
         console.log('Error sending mail: ', error)
-        res.status(500).send('Failed to send your msg. ')        
+        res.render('contact_status', {status: 'failed', contact_person_name: name})
     }
 })
 

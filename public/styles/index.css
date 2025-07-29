@@ -99,7 +99,7 @@ nav {
   white-space: nowrap;
   letter-spacing: normal;
   animation: typing 3.5s steps(16, end) forwards,
-    blink-caret 1.5s step-end infinite;
+    blink-caret 1s step-end infinite;
 }
 
 @keyframes typing {
@@ -107,7 +107,7 @@ nav {
     width: 0;
   }
   to {
-    width: 16ch;
+    width: 15ch;
   }
 }
 

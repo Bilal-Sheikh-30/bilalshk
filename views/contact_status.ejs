@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/profile-pic.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <title>Contact Status - Bilal</title>
+    <link rel="stylesheet" href="/styles/contact_status.css">
+</head>
+
+<body>
+    <nav>
+        <div class="left">
+            <img src="/profile-pic.png" alt="profile pic" class="profile_pic">
+            <a href="/" class="name">BILAL AHMED SHEIKH</a>
+        </div>
+        <div class="right">
+            <a href="/">HOME</a>
+            <a href="/about">ABOUT</a>
+            <a href="/projects">PROJECTS</a>
+            <a href="/contact">CONTACT</a>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <div class="status-container">
+            <% if (status === 'success') { %>
+                <div class="status-icon success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h1 class="status-title success-title">Message Sent Successfully!</h1>
+                <p class="status-message">
+                    Hey <span class="person-name"><%= contact_person_name %></span>! 🎉<br>
+                    Thanks for reaching out! I've received your message and I'll get back to you ASAP. 
+                </p>
+            <% } else { %>
+                <div class="status-icon error-icon">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <h1 class="status-title error-title">Message Failed to Send</h1>
+                <p class="status-message">
+                    Sorry <span class="person-name"><%= contact_person_name %></span>! 😔<br>
+                    Something went wrong while sending your message. This could be due to a temporary server issue. 
+                    Please reach out to me directly at <strong>bilalsheikh3011@gmail.com</strong>
+                </p>
+            <% } %>
+
+            <div class="action-buttons">
+                <% if (status === 'success') { %>
+                    <a href="/" class="btn btn-primary">Back to Home</a>
+                    <a href="/projects" class="btn btn-secondary">View Projects</a>
+                <% } else { %>
+                    <a href="/contact" class="btn btn-primary">Try Again</a>
+                    <a href="/" class="btn btn-secondary">Back to Home</a>
+                <% } %>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div id="media_handles">
+            <a href="https://www.linkedin.com/in/bilal-ahmed-sheikh/" target="_blank">
+                <i class="fa-brands fa-linkedin fa-2xl"></i>
+            </a>
+            <a href="https://github.com/Bilal-Sheikh-30" target="_blank">
+                <i class="fa-brands fa-github fa-2xl"></i>
+            </a>
+        </div>
+    </footer>
+</body>
+
+</html>
