@@ -27,15 +27,15 @@
 
         <label>Frontend Tech Stack:</label>
           <input type="text" name="tech_frontend" value="<%= proj_descp?.[0]?.tech_stack?.frontend?.join(', ') || '' %>"
-            placeholder="e.g., React, Tailwind" required />
+            placeholder="(;) separated data" required />
 
         <label>Backend Tech Stack:</label>
           <input type="text" name="tech_backend" value="<%= proj_descp?.[0]?.tech_stack?.backend?.join(', ') || '' %>"
-            placeholder="e.g., Node.js, Express" required />
+            placeholder="(;) separated data" required />
 
         <label>Database Tech Stack:</label>
           <input type="text" name="tech_db" value="<%= proj_descp?.[0]?.tech_stack?.db?.join(', ') || '' %>"
-            placeholder="e.g., MongoDB, MySQL" required />
+            placeholder="(;) separated data" required />
 
         <label>GitHub Link:</label>
           <input type="url" name="github_link" value="<%= proj_descp?.[0]?.link || '' %>"
@@ -60,10 +60,10 @@
         <textarea name="summary" rows="2" required><%= project?.overview || '' %></textarea>
 
       <label>Features:</label>
-        <textarea name="features" rows="3" required><%= proj_descp?.[0]?.features?.join(', ') || '' %></textarea>
+        <textarea name="features" rows="3" required placeholder="(;) separated data"><%= proj_descp?.[0]?.features?.join(', ') || '' %></textarea>
 
       <label>Overview:</label>
-        <textarea name="overview" rows="4" required><%= proj_descp?.[0]?.detailed_overview || '' %></textarea>
+        <textarea name="overview" rows="4" placeholder="leave it. it wont get displayed."><%= proj_descp?.[0]?.detailed_overview || '' %></textarea>
 
       <label>Project Type:</label>
         <select name="project_type" required>

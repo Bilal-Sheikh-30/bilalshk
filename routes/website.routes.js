@@ -13,7 +13,7 @@ const transporter = nodemailer.createTransport({
         pass: process.env.EMAIL_PASS
     }
 //     tls: {
-//     // ↓↓ TEMPORARY FOR HOSTS LIKE RENDER
+//     // for testing in local only
 //     rejectUnauthorized: false 
 //   }
 });
@@ -21,10 +21,11 @@ const transporter = nodemailer.createTransport({
 router.post('/contact-bilal',async (req, res) =>{
     const {name, email, msg} = req.body;
     const mailOptions = {
-        from: email,
+        from: process.env.EMAIL_USER,
         to: process.env.EMAIL_USER,
-        subject: `portfolio - msg from ${name} via contact form.`,
-        text: msg 
+        replyTo: email,
+        subject: `Msg from portfolio contact form.`,
+        text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${msg}` 
     };
     try {
         await transporter.sendMail(mailOptions)
@@ -67,4 +68,13 @@ router.get('/projects',async (req, res) => {
     }
 });
 
+router.get('/get_project/:proj_id',async (req, res) => {
+    try {
+        const proj = await Project.findById(req.params.proj_id);
+        const proj_descp = await ProjectDescription.findOne({project_id: req.params.proj_id})
+        res.render('proj_descp', {proj, proj_descp});
+    } catch (error) {
+        res.status(500).json('Failed to fetch data.')
+    }
+})
 module.exports = router;

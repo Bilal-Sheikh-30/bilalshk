@@ -1,0 +1,404 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* nav bar */
+
+.profile_pic {
+  width: 5rem;
+  height: 5rem;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* margin: 4vh 9vw; */
+  margin: 0vh 9vw;
+  margin-top: 4vh;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 4vw;
+}
+
+.right > a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.right > a:hover {
+  /* border-bottom: 5px solid #515b65; */
+  border-bottom: 5px solid #ff5277;
+  border-radius: 2px;
+}
+
+.right a:focus {
+  border-bottom: 5px solid #ff5277;
+  border-radius: 2px;
+}
+
+/* when nav menu is activated */
+.active_menu {
+  border-bottom: 5px solid #ff5277;
+  border-radius: 2px;
+  font-weight: bold;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 1vw;
+}
+
+.name {
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+}
+
+.name:hover {
+  color: #ff5277;
+}
+
+.left:hover {
+  cursor: pointer;
+}
+
+.name {
+  font-size: large;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #0e141b;
+  color: #ffffff;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.page-title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  /* margin: 20px 0 40px 0; */
+  margin: 0px 0 40px 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 25px;
+  margin-bottom: 30px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+.glass-pill {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 12px 20px;
+  display: inline-block;
+  margin-right: 15px;
+  box-shadow: 0 4px 16px 0 rgba(31, 38, 135, 0.37);
+  text-decoration: none;
+  color: #ffffff;
+  transition: all 0.3s ease;
+}
+
+.glass-pill:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+}
+
+.meta-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 30px;
+  align-items: center;
+}
+
+.github-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.github-link i {
+  font-size: 1.1rem;
+}
+
+/* Carousel Styles */
+.carousel-container {
+  position: relative;
+  margin-bottom: 30px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.carousel {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+}
+
+.carousel-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.carousel-slide.active {
+  opacity: 1;
+}
+
+.carousel-slide img,
+.carousel-slide video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.carousel-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 15px;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.carousel-nav:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.carousel-nav.prev {
+  left: 20px;
+}
+
+.carousel-nav.next {
+  right: 20px;
+}
+
+.carousel-indicators {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+.indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.indicator.active {
+  background: rgba(255, 255, 255, 1);
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #667eea;
+}
+
+.overview-text {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #e0e0e0;
+}
+
+.features-tech-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.features-list {
+  list-style: none;
+}
+
+.features-list li {
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  padding-left: 25px;
+}
+
+.features-list li:before {
+  content: "▶";
+  position: absolute;
+  left: 0;
+  color: #667eea;
+  font-size: 0.8rem;
+}
+
+.features-list li:last-child {
+  border-bottom: none;
+}
+
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 15px;
+}
+
+.tech-item {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 15px;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.tech-item:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+}
+
+.tech-item span {
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  /* nav bar */
+
+  .left {
+    gap: 2vw;
+  }
+
+  nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 5vh;
+    height: 6rem;
+  }
+
+  .profile_pic {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .container {
+    padding: 15px;
+  }
+
+  .page-title {
+    font-size: 2rem;
+    margin: 15px 0 30px 0;
+  }
+
+  .glass-card {
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  .meta-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .glass-pill {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .carousel {
+    height: 250px;
+  }
+
+  .features-tech-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .tech-grid {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 10px;
+  }
+
+  .tech-item {
+    padding: 12px;
+    font-size: 0.9rem;
+  }
+
+  .carousel-nav {
+    padding: 12px;
+    font-size: 16px;
+  }
+
+  .carousel-nav.prev {
+    left: 10px;
+  }
+
+  .carousel-nav.next {
+    right: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-title {
+    font-size: 1.8rem;
+  }
+
+  .glass-card {
+    padding: 15px;
+  }
+
+  .carousel {
+    height: 200px;
+  }
+
+  .section-title {
+    font-size: 1.3rem;
+  }
+
+  .tech-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

@@ -2,22 +2,15 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="/profile-pic.png">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/profile-pic.png" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-    <link rel="stylesheet" href="/styles/index.css">
-    <title>Contact - Bilal Ahmed Sheikh</title>
-    <style>
-        @media (max-width:600px) {
-            button{
-                margin-top: 2em;
-            }
-            
-        }
-    </style>
+    <title>Contact - Bilal</title>
+    <link rel="stylesheet" href="/styles/contact.css">
 </head>
 
+<body id="contact_page_body">
     <nav>
         <div class="left">
             <img src="/profile-pic.png" alt="profile pic" class="profile_pic">
@@ -30,31 +23,37 @@
             <a href="/contact" class="active_menu">CONTACT</a>
         </div>
     </nav>
-<body id="contact_page_body">
 
     <div class="center-screen" id="contact">
-        <h1 id="contact_me" class="bg-color"></h1>
-        <p id="msg" class="bg-color">Wanna ask something?? Write here... </p>
-        <form action="https://portfolio-backend-b0bv.onrender.com/contact-bilal" method="post"  class="bg-color">
-            <div id="name" class="bg-color"><p class="bg-color">NAME*</p>
-            <input type="text" name="name" id="" placeholder="Enter your name: " required class="bg-color-input"></div>
-            <div id="mail" class="bg-color"><p class="bg-color">EMAIL*</p>
-            <input type="email" name="email" id="" placeholder="Enter your email: " required class="bg-color-input"></div>
-            <div id="msg-req" class="bg-color"><p class="bg-color">MESSAGE*</p>
-            <textarea name="msg" placeholder="Enter your msg here:" cols="30" rows="10" class="bg-color-input"></textarea></div>
+        <h1 id="contact_me">Reach Out</h1>
+        <p id="msg">Wanna ask something?? Write here...</p>
+        <form action="https://portfolio-backend-b0bv.onrender.com/contact-bilal" method="post">
+            <div>
+                <p>NAME*</p>
+                <input type="text" name="name" placeholder="Enter your name:" required>
+            </div>
+            <div>
+                <p>EMAIL*</p>
+                <input type="email" name="email" placeholder="Enter your email:" required>
+            </div>
+            <div>
+                <p>MESSAGE*</p>
+                <textarea name="msg" rows="7" placeholder="Enter your msg here:" required></textarea>
+            </div>
             <button type="submit" id="send">SEND</button>
         </form>
-
     </div>
 
     <footer>
         <div id="media_handles">
-            <a href="https://www.linkedin.com/in/bilal-ahmed-sheikh/" target="_blank"><i
-                    class="fa-brands fa-linkedin fa-2xl"></i></a>
-            <a href="https://github.com/Bilal-Sheikh-30" target="_blank"><i class="fa-brands fa-github fa-2xl"></i></a>
+            <a href="https://www.linkedin.com/in/bilal-ahmed-sheikh/" target="_blank">
+                <i class="fa-brands fa-linkedin fa-2xl"></i>
+            </a>
+            <a href="https://github.com/Bilal-Sheikh-30" target="_blank">
+                <i class="fa-brands fa-github fa-2xl"></i>
+            </a>
         </div>
     </footer>
-    
 </body>
 
 </html>

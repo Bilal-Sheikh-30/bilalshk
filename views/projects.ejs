@@ -7,7 +7,7 @@
     <link rel="icon" type="image/png" href="/profile-pic.png" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <link rel="stylesheet" href="/styles/projects.css" />
-    <title>Projects - BILAL AHMED SHEIKH</title>
+    <title>Projects - Bilal</title>
 </head>
 
 <body>
@@ -31,7 +31,7 @@
                     let firstMedia = project.media && project.media.length > 0 ? project.media[0] : null;
                     %>
                     <div class="card"
-                        onclick="window.location.href='<%= project.link || `/projects/${project._id}` %>'">
+                        onclick="window.location.href='<%= `/get_project/${project._id}` %>'">
                         <% if (firstMedia && firstMedia.endsWith('.mp4')) { %>
                             <video class="card-img" controls muted>
                                 <source src="<%= firstMedia %>" type="video/mp4">
@@ -50,7 +50,7 @@
                                             <p class="card-text">
                                                 <%= project.overview || 'No description provided.' %>
                                             </p>
-                                            <a href="<%= project.link || `/projects/${project._id}` %>"
+                                            <a href="<%= `/get_project/${project._id}` %>"
                                                 class="btn-read-more">
                                                 See Details
                                                 <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" fill="none"

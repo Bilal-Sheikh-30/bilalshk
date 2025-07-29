@@ -95,7 +95,7 @@ router.post('/add_project', isme, upload.array('media'), async (req, res) => {
 
     // Helper to split comma-separated values into arrays
     const parseField = (value) =>
-      typeof value === 'string' ? value.split(',').map(str => str.trim()) : [];
+      typeof value === 'string' ? value.split(';').map(str => str.trim()) : [];
 
     // Save detailed project description
     const newProjectDesc = new ProjectDescription({
@@ -179,7 +179,7 @@ router.post('/edit_project/:id', isme, upload.array('media'), async (req, res) =
     await existingProject.save();
 
     // Convert comma-separated strings to arrays (if not already arrays)
-    const parseField = (value) => typeof value === 'string' ? value.split(',').map(str => str.trim()) : [];
+    const parseField = (value) => typeof value === 'string' ? value.split(';').map(str => str.trim()) : [];
 
     // Update Project Description
     existingDesc.detailed_overview = body.overview;

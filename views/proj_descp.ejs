@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="/profile-pic.png">
+  <title>
+    <%= proj.title %> - Project Details
+  </title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/styles/proj_descp.css">
+</head>
+
+<body>
+  <nav>
+    <div class="left">
+      <img src="/profile-pic.png" alt="profile pic" class="profile_pic">
+      <a href="/" class="name">BILAL AHMED SHEIKH</a>
+    </div>
+    <div class="right">
+      <a href="/">HOME</a>
+      <a href="/about">ABOUT</a>
+      <a href="/projects" class="active_menu">PROJECTS</a>
+      <a href="/contact">CONTACT</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <!-- Page Title -->
+    <h1 class="page-title">
+      <%= proj.title %>
+    </h1>
+
+    <!-- Media Carousel -->
+    <div class="carousel-container">
+      <div class="carousel">
+        <% proj.media.forEach((mediaUrl, index)=> { %>
+          <div class="carousel-slide <%= index === 0 ? 'active' : '' %>">
+            <% if (mediaUrl.includes('.mp4') || mediaUrl.includes('.webm') || mediaUrl.includes('.mov')) { %>
+              <video controls>
+                <source src="<%= mediaUrl %>" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <% } else { %>
+                <img src="<%= mediaUrl %>" alt="<%= proj.title %> media <%= index + 1 %>">
+                <% } %>
+          </div>
+          <% }); %>
+
+            <% if (proj.media.length> 1) { %>
+              <button class="carousel-nav prev" onclick="changeSlide(-1)">
+                <i class="fas fa-chevron-left"></i>
+              </button>
+              <button class="carousel-nav next" onclick="changeSlide(1)">
+                <i class="fas fa-chevron-right"></i>
+              </button>
+
+              <div class="carousel-indicators">
+                <% proj.media.forEach((_, index)=> { %>
+                  <div class="indicator <%= index === 0 ? 'active' : '' %>" onclick="currentSlide(<%= index + 1 %>)">
+                  </div>
+                  <% }); %>
+              </div>
+              <% } %>
+      </div>
+    </div>
+
+    <!-- Meta Information -->
+    <div class="meta-info">
+      <div class="glass-pill">
+        <strong>Role:</strong>
+        <%= proj_descp.my_role.charAt(0).toUpperCase() + proj_descp.my_role.slice(1) %> Developer
+      </div>
+      <div class="glass-pill">
+        <strong>
+          <%= proj_descp.project_type.charAt(0).toUpperCase() + proj_descp.project_type.slice(1) %>
+        </strong> Project
+      </div>
+      <% if (proj_descp.link) { %>
+        <a href="<%= proj_descp.link %>" target="_blank" class="glass-pill github-link">
+          <i class="fab fa-github"></i>
+          <span>
+            <%= proj_descp.link.split('/').slice(-2).join('/') %>
+          </span>
+        </a>
+        <% } %>
+    </div>
+
+    <!-- Overview Section -->
+    <div class="glass-card">
+      <h2 class="section-title">Overview</h2>
+      <p class="overview-text">
+        <%= proj.overview %>
+      </p>
+      <% if (proj_descp.detailed_overview && proj_descp.detailed_overview !==proj.overview) { %>
+        <p class="overview-text" style="margin-top: 15px;">
+          <%= proj_descp.detailed_overview %>
+        </p>
+        <% } %>
+    </div>
+
+    <!-- Features and Tech Stack Container -->
+    <div class="features-tech-container">
+      <!-- Features Section -->
+      <div class="glass-card">
+        <h2 class="section-title">Features</h2>
+        <ul class="features-list">
+          <% proj_descp.features.forEach(feature=> { %>
+            <li>
+              <%= feature %>
+            </li>
+            <% }); %>
+        </ul>
+      </div>
+
+      <!-- Tech Stack Section -->
+      <div class="glass-card">
+        <h2 class="section-title">Tech Stack</h2>
+        <div class="tech-grid">
+          <% const allTech=[]; if (proj_descp.tech_stack.frontend) allTech.push(...proj_descp.tech_stack.frontend); if
+            (proj_descp.tech_stack.backend) allTech.push(...proj_descp.tech_stack.backend); if
+            (proj_descp.tech_stack.db) allTech.push(...proj_descp.tech_stack.db); %>
+            <% allTech.forEach(tech=> { %>
+              <div class="tech-item">
+                <span>
+                  <%= tech %>
+                </span>
+              </div>
+              <% }); %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/scripts/proj_descp.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,217 @@
+/* initial reset */
+* {
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif,
+    Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+}
+
+body {
+  background-color: #0e141b;
+}
+
+a {
+  list-style: none;
+  text-decoration: none;
+}
+
+/* nav bar */
+.profile_pic {
+  width: 5rem;
+  height: 5rem;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 4vh 9vw;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 4vw;
+}
+
+.right > a:hover {
+  border-bottom: 5px solid #515b65;
+  border-radius: 2px;
+}
+
+.right a:focus {
+  border-bottom: 5px solid #ff5277;
+  border-radius: 2px;
+}
+
+/* when nav menu is activated */
+.active_menu {
+  border-bottom: 5px solid #ff5277;
+  border-radius: 2px;
+  font-weight: bold;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 1vw;
+}
+
+.name {
+  font-weight: bold;
+  font-size: large;
+}
+
+.name:hover {
+  color: #ff5277;
+}
+
+.left:hover {
+  cursor: pointer;
+}
+
+/* about page */
+#heyThere {
+  font-size: 5vw;
+  text-align: center;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  gap: 2vw;
+  margin: 6vh 9vw;
+}
+
+#about_pic {
+  width: 18rem;
+  height: 18rem;
+  border-radius: 50%;
+}
+
+.info_text {
+  font-size: x-large;
+  line-height: 1.5;
+}
+
+.info_text > p {
+  line-height: 2;
+}
+
+.highlight {
+  color: #ff5277;
+}
+
+.tech {
+  margin: 5vh 9vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.about_headings {
+  font-size: 2.5rem;
+}
+
+/* Badge Styles - Applied to both tech and social */
+.tech_container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+  padding: 20px;
+}
+
+.tech-badge {
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.tech-badge:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.tech-badge img {
+  display: block;
+  height: 35px;
+  width: auto;
+}
+
+/* Mobile Responsive */
+@media (max-width: 600px) {
+  /* nav bar */
+  .left {
+    gap: 2vw;
+  }
+
+  nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-top: 3vh;
+    height: 7rem;
+  }
+
+  .profile_pic {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  /* about page */
+  #heyThere {
+    font-size: 10vw;
+    text-align: center;
+  }
+
+  #about_pic {
+    width: 18rem;
+    height: 18rem;
+    margin: auto;
+  }
+
+  .about_headings {
+    font-size: 2.5rem;
+  }
+
+  .info {
+    flex-direction: column;
+  }
+
+  .info_text {
+    margin-top: 2vh;
+  }
+
+  .tech_container {
+    gap: 12px;
+    padding: 15px;
+  }
+
+  .tech-badge img {
+    height: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .tech_container {
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .tech-badge img {
+    height: 28px;
+  }
+}
+
+/* Ensure badges are centered and well-spaced */
+@media (min-width: 769px) {
+  .tech_container {
+    max-width: 900px;
+    margin: 20px auto;
+  }
+}
