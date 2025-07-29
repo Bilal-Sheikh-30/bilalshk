@@ -187,7 +187,8 @@ footer {
   font-size: 0.875rem;
   font-weight: 500;
   color: #fff;
-  background-color: #414e5cc7;
+  /* background-color: #414e5cc7; */
+  background-color: #667eea;
   border-radius: 0 0 0.5rem 0.5rem;
   text-decoration: none;
   transition: background-color 0.3s;
