@@ -77,4 +77,8 @@ router.get('/get_project/:proj_id',async (req, res) => {
         res.status(500).json('Failed to fetch data.')
     }
 })
+
+router.get('/ping', (req, res) => {
+    res.status(200).send('pinged!')
+})
 module.exports = router;
