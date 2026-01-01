@@ -2,39 +2,49 @@ const express = require('express');
 const { default: mongoose } = require('mongoose');
 const router = express.Router()
 const { Project, ProjectDescription } = require('../models/portfolio.model')
-const nodemailer = require('nodemailer');
 
-const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 465, // or 587 if secure is false
-    secure: true, // true for port 465
-    auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
-    }
-//     tls: {
-//     // for testing in local only
-//     rejectUnauthorized: false 
-//   }
+const mailjet = require('node-mailjet')
+  .apiConnect(
+    process.env.MAILJET_API_KEY,
+    process.env.MAILJET_SECRET_KEY
+  );
+
+
+router.post('/contact-bilal', async (req, res) => {
+  const { name, email, msg } = req.body;
+
+  try {
+    await mailjet.post('send', { version: 'v3.1' }).request({
+      Messages: [
+        {
+          From: {
+            Email: process.env.EMAIL_USER,
+            Name: 'Portfolio Contact'
+          },
+          To: [
+            {
+              Email: process.env.EMAIL_USER,
+              Name: 'Bilal'
+            }
+          ],
+          ReplyTo: {
+            Email: email,
+            Name: name
+          },
+          Subject: 'Msg from portfolio contact form',
+          TextPart: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${msg}`
+        }
+      ]
+    });
+
+    res.render('contact_status', { status: 'success', contact_person_name: name });
+  } catch (error) {
+    console.log('Mailjet error:', error);
+    res.render('contact_status', { status: 'failed', contact_person_name: name });
+  }
 });
 
-router.post('/contact-bilal',async (req, res) =>{
-    const {name, email, msg} = req.body;
-    const mailOptions = {
-        from: process.env.EMAIL_USER,
-        to: process.env.EMAIL_USER,
-        replyTo: email,
-        subject: `Msg from portfolio contact form.`,
-        text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${msg}` 
-    };
-    try {
-        await transporter.sendMail(mailOptions)
-        res.render('contact_status', {status: 'success', contact_person_name: name})
-    } catch (error) {
-        console.log('Error sending mail: ', error)
-        res.render('contact_status', {status: 'failed', contact_person_name: name})
-    }
-})
+
 
 router.get('/',async (req, res) => {
     try {
